@@ -26,7 +26,7 @@ version 1.11.3 or later of PPSSPP emulator.
 Drag the PSP folder onto PPSSPP folder, which is usually located in Documents folder on
 Windows. On Android, it is usually in root memory card folder ("PSP").
 
-#Configuration
+# Configuration
 MKUHook comes with a simple configuration file, which allows you to use extra features.
 Open PSP\PLUGINS\mkuhook\settings.txt with any text editor.
 
