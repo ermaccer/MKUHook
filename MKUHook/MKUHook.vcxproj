@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="code\eLog.c" />
+    <ClCompile Include="code\eSettingsMgr.c" />
+    <ClCompile Include="code\helper.c" />
+    <ClCompile Include="code\mkdeception.c" />
+    <ClCompile Include="code\mkuhook.c" />
+    <ClCompile Include="code\mkumenu.c" />
+    <ClCompile Include="code\pspmem.c" />
+    <ClCompile Include="main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="code\eLog.h" />
+    <ClInclude Include="code\eSettingsMgr.h" />
+    <ClInclude Include="code\helper.h" />
+    <ClInclude Include="code\mkdeception.h" />
+    <ClInclude Include="code\mkstructs.h" />
+    <ClInclude Include="code\mkuhook.h" />
+    <ClInclude Include="code\mkumenu.h" />
+    <ClInclude Include="code\pspmem.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{6ECACDEC-EA52-46DF-902C-DDEAB6D56877}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>vsmake</NMakeBuildCommandLine>
+    <NMakeOutput>MKUHook.ebp</NMakeOutput>
+    <NMakeCleanCommandLine>vsmake clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>vsmake clean &amp;&amp; vsmake</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath>C:\pspsdk\psp\sdk\include;C:\pspsdk\psp\include;$(IncludePath)</IncludePath>
+    <NMakeIncludeSearchPath>C:\pspsdk\psp\sdk\include</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>vsmake</NMakeBuildCommandLine>
+    <NMakeOutput>MKUHook.ebp</NMakeOutput>
+    <NMakeCleanCommandLine>vsmake clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>vsmake clean &amp;&amp; vsmake</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath>C:\pspsdk\psp\sdk\include;C:\pspsdk\psp\include;$(IncludePath)</IncludePath>
+    <NMakeIncludeSearchPath>C:\pspsdk\psp\sdk\include</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
