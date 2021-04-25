@@ -2,7 +2,8 @@
 
 
 struct settings {
-	char bUsePuzzleModifierInNormalGame;
+	int bUsePuzzleModifierInNormalGame;
+	int bHideFighterFaceInLifebar;
 	int iForceShujinkoModel;
 };
 

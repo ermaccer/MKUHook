@@ -13,57 +13,78 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\code">
+      <UniqueIdentifier>{681585a0-5b89-4527-988b-f2340e4d47a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="code\mkdeception.c">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\eLog.c">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\pspmem.c">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="code\mkumenu.c">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\mkuhook.c">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="code\eLog.c">
+      <Filter>Header Files\code</Filter>
     </ClCompile>
     <ClCompile Include="code\eSettingsMgr.c">
+      <Filter>Header Files\code</Filter>
+    </ClCompile>
+    <ClCompile Include="code\mkdeception.c">
+      <Filter>Header Files\code</Filter>
+    </ClCompile>
+    <ClCompile Include="code\mkuhook.c">
+      <Filter>Header Files\code</Filter>
+    </ClCompile>
+    <ClCompile Include="code\mkumenu.c">
+      <Filter>Header Files\code</Filter>
+    </ClCompile>
+    <ClCompile Include="code\pspmem.c">
+      <Filter>Header Files\code</Filter>
+    </ClCompile>
+    <ClCompile Include="code\ssf.c">
+      <Filter>Header Files\code</Filter>
+    </ClCompile>
+    <ClCompile Include="minIni.c">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="code\helper.c">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="code\mkuplrinfo.c">
+      <Filter>Header Files\code</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="code\pspmem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="code\mkdeception.h">
+    <ClInclude Include="code\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="code\eLog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="code\mkstructs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="code\mkumenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="code\mkuhook.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\code</Filter>
     </ClInclude>
     <ClInclude Include="code\eSettingsMgr.h">
+      <Filter>Header Files\code</Filter>
+    </ClInclude>
+    <ClInclude Include="code\mkdeception.h">
+      <Filter>Header Files\code</Filter>
+    </ClInclude>
+    <ClInclude Include="code\mkstructs.h">
+      <Filter>Header Files\code</Filter>
+    </ClInclude>
+    <ClInclude Include="code\mkuhook.h">
+      <Filter>Header Files\code</Filter>
+    </ClInclude>
+    <ClInclude Include="code\mkumenu.h">
+      <Filter>Header Files\code</Filter>
+    </ClInclude>
+    <ClInclude Include="code\pspmem.h">
+      <Filter>Header Files\code</Filter>
+    </ClInclude>
+    <ClInclude Include="code\ssf.h">
+      <Filter>Header Files\code</Filter>
+    </ClInclude>
+    <ClInclude Include="minGlue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="code\helper.h">
+    <ClInclude Include="minIni.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="code\mkuplrinfo.h">
+      <Filter>Header Files\code</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

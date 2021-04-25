@@ -49,14 +49,18 @@ enum characters {
 	MKDA_FROST,
 	MKDA_KITANA,
 	MKDA_DRAHMIN,
-	MKDA_BLAZE
+	MKDA_BLAZE,
+	// new
+	MKDA_MOKAP,
+	MKDA_KANO,
+	TOTAL_CHARACTERS
 };
 
 struct player_info
 {
 	int field_0;
 	int field_4;
-	int field_8;
+	int selected;
 	float field_C;
 	char field_10;
 	char field_11;
@@ -101,16 +105,10 @@ struct player_info
 	char field_3E;
 	char field_3F;
 	int field_40;
-	int field_44;
+	int winCount;
 	int field_48;
-	char field_4C;
-	char field_4D;
-	char field_4E;
-	char field_4F;
-	char field_50;
-	char field_51;
-	char field_52;
-	char field_53;
+	int field_4C;
+	int field_50;
 	int characterID;
 	int field_58;
 	int field_5C;
@@ -119,3 +117,27 @@ struct player_info
 	int field_68;
 };
 
+struct select_screen_entry {
+	int characterID;
+	int soundID;
+	char* headName;
+	char* headLockedName;
+	char* bodyName;
+	char* bodyArchiveName;
+	char* difficulty;
+	char* style1;
+	char* style2;
+	char* style3;
+};
+
+struct mk_toc_entry {
+	struct mk_file_entry* entry;
+	int  previousSize;
+	int  size;
+};
+
+struct mk_file_entry {
+	char* name;
+	struct mk_toc_entry* belong;
+	int  type;
+};

@@ -4,6 +4,7 @@
 
 
 # Features:
+
 ## NPC select screen
 
 You can access all new select screen by pressing square + circle at any time.
@@ -26,16 +27,15 @@ version 1.11.3 or later of PPSSPP emulator.
 Drag the PSP folder onto PPSSPP folder, which is usually located in Documents folder on
 Windows. On Android, it is usually in root memory card folder ("PSP").
 
+If you use PPSSPP portable, the PSP folder is in memstick directory.
+
 # Configuration
 
 MKUHook comes with a simple configuration file, which allows you to use extra features.
-Open PSP\PLUGINS\mkuhook\settings.txt with any text editor.
+Open PSP\PLUGINS\mkuhook\settings.ini with any text editor.
 
-Values are seperate by spaces, 100 means disabled (depends on setting)
+# Building
+You will need PSPSDK set up, then simply execute the Makefile (or use Visual Studio solution).
 
-Settings list (starting from first value):
--bUsePuzzleModifierInNormalGame - 0 by default, setting this value to 1 enables puzzle modifier everywhere
--iForceShujinkoModel - 100 by default, set this value to 0-4 to change Shujinko's model in Konquest
-
-
-There's an extra log file - log.txt which can tell you if the plugin works or no.
+# Used stuff
+https://github.com/compuphase/minIni

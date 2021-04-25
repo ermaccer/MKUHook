@@ -3,43 +3,33 @@
 #include "mkstructs.h"
 #include "pspmem.h"
 #include "mkdeception.h"
-
+#include "mkumenu.h"
+#include <stdio.h>
 int  bSwapStatus = 0;
 
 
 
-struct select_screen_entry {
-	int characterID;
-	int soundID;
-	char* headName;
-	char* headLockedName;
-	char* bodyName;
-	char* bodyArchiveName;
-	char* difficulty;
-	char* style1;
-	char* style2;
-	char* style3;
-}pSelectTableNew[] = {
+struct select_screen_entry pSelectTableNew[] = {
 	{MONSTER, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "2"	, "HAPKIDO"	, "MOI FAH"	, "MUGAI RYU"},
 	{ONAGA	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "1"	, "DRAGON"	, ""	, ""},
 	{YOUNG_SHUJINKO	, 96	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "5"	, "MANTIS"	, "SHAOLIN FIST"	, "DAN TIEN DAO"},
-	{MKDA_QUAN_CHI	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, ""	, "TANG SOO DO"	, "ESCRIMA"	, "BROADSWORD"},
-	{MKDA_SHANG_TSUNG	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, ""	, "SNAKE"	, "MANTIS"	, ""},
-	{MKDA_NITARA	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, ""	, "LEOPARD"	, "FU JOW PAI"	, "DRAGON TEETH"},
-	{MKDA_SONYA	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, ""	, "KENPO"	, "TAE KWON DO"	, "KALI STICKS"},
-	{MKDA_CAGE	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, ""	, "SHINTO RYU"	, "JEET KUNE DO"	, "NUNCHAKU"},
-	{MKDA_KUNG_LAO	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, ""	, "MANTIS"	, "SHAOLIN FIST"	, "BROADSWORD"},
-	{MKDA_DRAHMIN	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, ""	, ""	, ""	, "IRON CLUB"},
-	{SMOKE	, 13	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, ""	, "MI TZU"	, ""	, ""},
-	{NOOB	, 13	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, ""	, "MONKEY"	, ""	, ""},
+	{MKDA_QUAN_CHI	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "4"	, "TANG SOO DO"	, "ESCRIMA"	, "BROADSWORD"},
+	{MKDA_SHANG_TSUNG	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "3"	, "SNAKE"	, "MANTIS"	, ""},
+	{MKDA_NITARA	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "5"	, "LEOPARD"	, "FU JOW PAI"	, "DRAGON TEETH"},
+	{MKDA_SONYA	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "1"	, "KENPO"	, "TAE KWON DO"	, "KALI STICKS"},
+	{MKDA_CAGE	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "3"	, "SHINTO RYU"	, "JEET KUNE DO"	, "NUNCHAKU"},
+	{MKDA_KUNG_LAO	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "2"	, "MANTIS"	, "SHAOLIN FIST"	, "BROADSWORD"},
+	{MKDA_DRAHMIN	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "5"	, ""	, ""	, "IRON CLUB"},
+	{SMOKE	, 13	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "5"	, "MI TZU"	, ""	, ""},
+	{NOOB	, 13	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "5"	, "MONKEY"	, ""	, ""},
+	{GHOST	, 90	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM" , "body_scorpion_alt.sec"	, "5"	, "JUN FAN"	, "PAO CHUI"	, "NUNCHAKU"},
+	{MKDA_RAIDEN	, 94	,	"HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM" , "body_scorpion_alt.sec"	, "4"	, "NAN CHUAN"	, "JUJUTSU"	, "STAFF"},
 	{RANDOM,0,"","","","","","","",""},
 	{RANDOM,0,"","","","","","","",""},
 	{RANDOM,0,"","","","","","","",""},
 	{RANDOM,0,"","","","","","","",""},
-	{RANDOM,0,"","","","","","","",""},
-	{RANDOM,0,"","","","","","","",""},
-	{RANDOM,0,"","","","","","","",""},
-	{RANDOM,0,"","","","","","","",""},
+	{MKDA_KANO	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "3"	, "SHINTO RYU"	, "JEET KUNE DO"	, "NUNCHAKU"},
+	{MKDA_MOKAP	, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "3"	, "SHINTO RYU"	, "JEET KUNE DO"	, "NUNCHAKU"},
 	{RANDOM,0,"","","","","","","",""},
 	{RANDOM,0,"","","","","","","",""},
 	{RANDOM,0,"","","","","","","",""},
@@ -59,6 +49,7 @@ struct select_screen_entry {
 	{RANDOM,0,"","","","","","","",""},
 	{RANDOM,0,"","","","","","","",""},
 	{RANDOM,0,"","","","","","","",""}
+
 
 };
 
@@ -170,7 +161,6 @@ void hook_new_select_table()
 void restore_select_screen()
 {
 	int select_addr = 0x31235C;
-	char msgBuffer[1256];
 	for (int i = 0; i < 30; i++)
 	{
 		int sel = (select_addr + (sizeof(struct select_screen_entry) * i));
@@ -193,4 +183,27 @@ int hook_restore_select_screen(int id, int unk, int func, int unk2, int unk3)
 	restore_select_screen();
 	refresh_screen();
 	return create_mkproc(id, unk, func, unk2, unk3);
+}
+
+int hook_load_graphics(int slot, int id, char * name, int orientation, int x, int y, int unk)
+{
+
+	char data[256];
+	mk_sprintf(data,"%x %d %s %d %d %d %d\n", slot, id, name, orientation, x, y, unk);
+	LOG_Message(data);
+	//orientation = 0;
+	//name = "";
+
+	return load_named_2d_pfxobj_xy(slot, id, name, orientation, x, y, unk);
+}
+
+void hook_custom_player_select()
+{
+	//p_pselect();
+}
+
+void custom_rendering()
+{
+	process_render();
+
 }

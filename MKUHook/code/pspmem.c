@@ -41,6 +41,11 @@ void MakeLUI(unsigned int addr, unsigned int value)
 	_sw(0x3C000000 | ((unsigned int)(value) >> 16), pBaseAddress + addr);
 }
 
+void MakeADDIU(unsigned int addr, unsigned int value)
+{
+	_sw(0x24000000 | ((unsigned int)(value)), pBaseAddress + addr);
+}
+
 void Nop(unsigned int addr)
 {
 	PatchInt(addr, 0);

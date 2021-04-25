@@ -13,22 +13,28 @@
   <ItemGroup>
     <ClCompile Include="code\eLog.c" />
     <ClCompile Include="code\eSettingsMgr.c" />
-    <ClCompile Include="code\helper.c" />
     <ClCompile Include="code\mkdeception.c" />
     <ClCompile Include="code\mkuhook.c" />
     <ClCompile Include="code\mkumenu.c" />
+    <ClCompile Include="code\mkuplrinfo.c" />
     <ClCompile Include="code\pspmem.c" />
+    <ClCompile Include="code\ssf.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="minIni.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="code\config.h" />
     <ClInclude Include="code\eLog.h" />
     <ClInclude Include="code\eSettingsMgr.h" />
-    <ClInclude Include="code\helper.h" />
     <ClInclude Include="code\mkdeception.h" />
     <ClInclude Include="code\mkstructs.h" />
     <ClInclude Include="code\mkuhook.h" />
     <ClInclude Include="code\mkumenu.h" />
+    <ClInclude Include="code\mkuplrinfo.h" />
     <ClInclude Include="code\pspmem.h" />
+    <ClInclude Include="code\ssf.h" />
+    <ClInclude Include="minGlue.h" />
+    <ClInclude Include="minIni.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -4,6 +4,8 @@
 #include "pspmem.h"
 #include "mkuhook.h"
 #include <pspctrl.h>
+
+char menu_active = 0;
 int menu_thread()
 {
 	SceCtrlData pad;
