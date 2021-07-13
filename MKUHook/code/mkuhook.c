@@ -4,10 +4,54 @@
 #include "pspmem.h"
 #include "mkdeception.h"
 #include "mkumenu.h"
+#include "eSettingsMgr.h"
 #include <stdio.h>
 int  bSwapStatus = 0;
 
 
+struct select_screen_entry pSelectTableNewImages[] = {
+	{MONSTER, 0	, "HEAD_MONSTER"	, "HEAD_RANDOM"	, "BODY_MONSTER"	, "body_scorpion_alt.sec"	, "2"	, "HAPKIDO"	, "MOI FAH"	, "MUGAI RYU"},
+	{ONAGA	, 0	, "HEAD_ONAGA"	, "HEAD_RANDOM"	, "BODY_ONAGA"	, "body_scorpion_alt.sec"	, "1"	, "DRAGON"	, ""	, ""},
+	{YOUNG_SHUJINKO	, 96	, "HEAD_SHU13"	, "HEAD_RANDOM"	, "BODY_SHU13"	, "body_scorpion_alt.sec"	, "5"	, "MANTIS"	, "SHAOLIN FIST"	, "DAN TIEN DAO"},
+	{MKDA_QUAN_CHI	, 0	, "HEAD_QUAN"	, "HEAD_RANDOM"	, "BODY_QUAN"	, "body_scorpion_alt.sec"	, "4"	, "TANG SOO DO"	, "ESCRIMA"	, "BROADSWORD"},
+	{MKDA_SHANG_TSUNG	, 0	, "HEAD_SHANG"	, "HEAD_SHANG"	, "BODY_SHANG"	, "body_scorpion_alt.sec"	, "3"	, "SNAKE"	, "MANTIS"	, ""},
+	{MKDA_NITARA	, 0	, "HEAD_NITARA"	, "HEAD_NITARA"	, "BODY_NITARA"	, "body_scorpion_alt.sec"	, "5"	, "LEOPARD"	, "FU JOW PAI"	, "DRAGON TEETH"},
+	{MKDA_SONYA	, 0	, "HEAD_SONYA"	, "HEAD_RANDOM"	, "BODY_SONYA"	, "body_scorpion_alt.sec"	, "1"	, "KENPO"	, "TAE KWON DO"	, "KALI STICKS"},
+	{MKDA_CAGE	, 0	, "HEAD_CAGE"	, "HEAD_CAGE"	, "BODY_CAGE"	, "body_scorpion_alt.sec"	, "3"	, "SHINTO RYU"	, "JEET KUNE DO"	, "NUNCHAKU"},
+	{MKDA_KUNG_LAO	, 0	, "HEAD_KUNG"	, "HEAD_KUNG"	, "BODY_KUNG"	, "body_scorpion_alt.sec"	, "2"	, "MANTIS"	, "SHAOLIN FIST"	, "BROADSWORD"},
+	{MKDA_DRAHMIN	, 0	, "HEAD_DRAHMIN"	, "HEAD_DRAHMIN"	, "BODY_DRAHMIN"	, "body_scorpion_alt.sec"	, "5"	, ""	, ""	, "IRON CLUB"},
+	{SMOKE	, 13	, "HEAD_SMOKE"	, "HEAD_RANDOM"	, "BODY_SMOKE"	, "body_scorpion_alt.sec"	, "5"	, "MI TZU"	, ""	, ""},
+	{NOOB	, 13	, "HEAD_NOOB2"	, "HEAD_RANDOM"	, "BODY_NOOB2"	, "body_scorpion_alt.sec"	, "5"	, "MONKEY"	, ""	, ""},
+	{GHOST	, 90	, "HEAD_GHOST"	, "HEAD_RANDOM"	, "BODY_GHOST" , "body_scorpion_alt.sec"	, "5"	, "JUN FAN"	, "PAO CHUI"	, "NUNCHAKU"},
+	{MKDA_RAIDEN	, 94	,	"HEAD_MRAIDEN"	, "HEAD_RANDOM"	, "BODY_MRAIDEN" , "body_scorpion_alt.sec"	, "4"	, "NAN CHUAN"	, "JUJUTSU"	, "STAFF"},
+	{MKDA_KANO	, 0	, "HEAD_KANO"	, "HEAD_RANDOM"	, "BODY_KANO"	, "body_scorpion_alt.sec"	, "3"	, "SHINTO RYU"	, "JEET KUNE DO"	, "NUNCHAKU"},
+	{MKDA_MOKAP	, 0	, "HEAD_MOKAP"	, "HEAD_RANDOM"	, "BODY_MOKAP"	, "body_scorpion_alt.sec"	, "3"	, "SHINTO RYU"	, "JEET KUNE DO"	, "NUNCHAKU"},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""},
+	{RANDOM,0,"","","","","","","",""}
+
+
+};
 
 struct select_screen_entry pSelectTableNew[] = {
 	{MONSTER, 0	, "HEAD_RANDOM"	, "HEAD_RANDOM"	, "BODY_RANDOM"	, "body_scorpion_alt.sec"	, "2"	, "HAPKIDO"	, "MOI FAH"	, "MUGAI RYU"},
@@ -140,16 +184,33 @@ void hook_new_select_table()
 		}
 		else
 		{
-			PatchInt(sel + 0, pSelectTableNew[i].characterID);
-			PatchInt(sel + 4, pSelectTableNew[i].soundID);
-			PatchInt(sel + 8, (int)&pSelectTableNew[i].headName[0]);
-			PatchInt(sel + 12, (int)&pSelectTableNew[i].headLockedName[0]);
-			PatchInt(sel + 16, (int)&pSelectTableNew[i].bodyName[0]);
-			PatchInt(sel + 20, (int)&pSelectTableNew[i].bodyArchiveName[0]);
-			PatchInt(sel + 24, (int)&pSelectTableNew[i].difficulty[0]);
-			PatchInt(sel + 28, (int)&pSelectTableNew[i].style1[0]);
-			PatchInt(sel + 32, (int)&pSelectTableNew[i].style2[0]);
-			PatchInt(sel + 36, (int)&pSelectTableNew[i].style3[0]);
+			if (SettingsMgr_Get().bUseImagesForExtraSelectScreen)
+			{
+				PatchInt(sel + 0, pSelectTableNewImages[i].characterID);
+				PatchInt(sel + 4, pSelectTableNewImages[i].soundID);
+				PatchInt(sel + 8, (int)&pSelectTableNewImages[i].headName[0]);
+				PatchInt(sel + 12, (int)&pSelectTableNewImages[i].headLockedName[0]);
+				PatchInt(sel + 16, (int)&pSelectTableNewImages[i].bodyName[0]);
+				PatchInt(sel + 20, (int)&pSelectTableNewImages[i].bodyArchiveName[0]);
+				PatchInt(sel + 24, (int)&pSelectTableNewImages[i].difficulty[0]);
+				PatchInt(sel + 28, (int)&pSelectTableNewImages[i].style1[0]);
+				PatchInt(sel + 32, (int)&pSelectTableNewImages[i].style2[0]);
+				PatchInt(sel + 36, (int)&pSelectTableNewImages[i].style3[0]);
+			}
+			else
+			{
+				PatchInt(sel + 0, pSelectTableNew[i].characterID);
+				PatchInt(sel + 4, pSelectTableNew[i].soundID);
+				PatchInt(sel + 8, (int)&pSelectTableNew[i].headName[0]);
+				PatchInt(sel + 12, (int)&pSelectTableNew[i].headLockedName[0]);
+				PatchInt(sel + 16, (int)&pSelectTableNew[i].bodyName[0]);
+				PatchInt(sel + 20, (int)&pSelectTableNew[i].bodyArchiveName[0]);
+				PatchInt(sel + 24, (int)&pSelectTableNew[i].difficulty[0]);
+				PatchInt(sel + 28, (int)&pSelectTableNew[i].style1[0]);
+				PatchInt(sel + 32, (int)&pSelectTableNew[i].style2[0]);
+				PatchInt(sel + 36, (int)&pSelectTableNew[i].style3[0]);
+			}
+
 		}
 
 

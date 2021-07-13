@@ -69,9 +69,6 @@ void Init(unsigned int addr)
 	MakeCall(0x1627F0, (int)hook_character_lock_status);
 	MakeCall(0x163938, (int)hook_character_lock_status);
 
-	MakeCall(0xC0CFC, (int)custom_rendering);
-	MakeCall(0xC0D2C, (int)custom_rendering);
-	MakeCall(0x61F48, (int)custom_rendering);
 
 	MakeCall(0x13FF04, (int)get_char_name);
 	MakeCall(0x13FF14, (int)get_char_name);
@@ -81,7 +78,6 @@ void Init(unsigned int addr)
 	PatchShort(0x1539C8, TOTAL_CHARACTERS);
 	PatchShort(0x150698, TOTAL_CHARACTERS);
 	PatchShort(0x1503A8, TOTAL_CHARACTERS);
-
 
 	MakeCall(0x6F2A8, (int)hook_unk_func);
 	MakeCall(0x6F2CC, (int)hook_unk_func);
@@ -106,7 +102,8 @@ void Init(unsigned int addr)
 
 	MakeCall(0x16824C, (int)player1_name);
 	MakeCall(0x16836C, (int)player2_name);
-	MakeCall(0x82B04,	(int)set_win_name);
+	MakeCall(0x82B04,  (int)set_win_name);
+
 
 #ifndef REAL_PSP
 	sceKernelDcacheWritebackAll();

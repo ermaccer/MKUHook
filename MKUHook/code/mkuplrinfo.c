@@ -3,12 +3,35 @@
 #include "mkdeception.h"
 #include "pspmem.h"
 #include "eLog.h"
-
+#include "eSettingsMgr.h"
 int last_created_player = PLAYER1;
 int last_saved_char_id = PLAYER1;
 
 
 struct mk_toc_entry kano_toc[] = {
+	{"",0,0 },
+	{"",0,483968},
+	{"",0,483968},
+	{"",0,145792},
+	{"",0,2688},
+	{"",0,21600},
+	{"",0,12224},
+	{"",0,16032},
+	{"",0,9600},
+	{"",0,14592},
+	{"",0,9600},
+	{"",0,15424},
+	{"",0,9600},
+	{"",0,27008},
+	{"",0,52352},
+	{"",0,170496},
+	{"",0,195328},
+	{"",0,222208},
+	{0,0,0}
+
+};
+
+struct mk_toc_entry psel_toc[] = {
 	{"",0,0 },
 	{"",0,483968},
 	{"",0,483968},
@@ -307,10 +330,10 @@ int custom_load_script_data_async(int id, char * name)
 	return load_script_data(id,pCharTable[charID].scriptName);
 }
 
-int player1_name(int id, int font, char * text, int y, int x, int unk)
+int player1_name(int id, int font, char * text, int x, int y, int unk)
 {
 	int p1_id = ReadInt(PLAYER1_ADDR + 0x54);
-	return string_left_xy(id, font, pCharTable[p1_id].name, y, x, unk);
+	return string_left_xy(id, font, pCharTable[p1_id].name, x, y, unk);
 }
 
 int player2_name(int id, int font, char * text, int y, int x, int unk)
@@ -381,6 +404,8 @@ void calculate_custom_toc()
 		baseSize += (mokap_file_table[i].size + 2048 - 1) & -2048;
 
 	}
+
+	
 
 }
 
