@@ -3,11 +3,15 @@
 #include "mkstructs.h"
 #include "pspmem.h"
 #include "mkdeception.h"
-#include "mkumenu.h"
 #include "eSettingsMgr.h"
 #include <stdio.h>
-int  bSwapStatus = 0;
+#include <pspctrl.h>
 
+
+static int  bSwapStatus = 0;
+static int m_nTimer = 0;
+
+int toggle_palette = 0;
 
 struct select_screen_entry pSelectTableNewImages[] = {
 	{MONSTER, 0	, "HEAD_MONSTER"	, "HEAD_RANDOM"	, "BODY_MONSTER"	, "body_scorpion_alt.sec"	, "2"	, "HAPKIDO"	, "MOI FAH"	, "MUGAI RYU"},
@@ -138,6 +142,19 @@ int hook_character_lock_status(int id, int param)
 	return is_char_locked(id, param);
 }
 
+int hook_stage_lock_status(int id)
+{
+	int mode = ReadInt(0x58EE98);
+
+	if (mode == 13)
+		return is_bgnd_locked(id);
+	else
+	{
+		id = BGS_THEPIT;
+		return is_bgnd_locked(id);
+	}
+}
+
 void dump_select_screen(unsigned int addr)
 {
 	int select_addr = addr + 0x31235C;
@@ -160,9 +177,9 @@ void dump_select_screen(unsigned int addr)
 	}
 }
 
-void hook_new_select_table()
+void hook_new_select_table(int status)
 {
-	bSwapStatus ^= 1;
+	bSwapStatus = status;
 	int select_addr = 0x31235C;
 	char msgBuffer[1256];
 	for (int i = 0; i < 30; i++)
@@ -246,25 +263,46 @@ int hook_restore_select_screen(int id, int unk, int func, int unk2, int unk3)
 	return create_mkproc(id, unk, func, unk2, unk3);
 }
 
-int hook_load_graphics(int slot, int id, char * name, int orientation, int x, int y, int unk)
-{
-
-	char data[256];
-	mk_sprintf(data,"%x %d %s %d %d %d %d\n", slot, id, name, orientation, x, y, unk);
-	LOG_Message(data);
-	//orientation = 0;
-	//name = "";
-
-	return load_named_2d_pfxobj_xy(slot, id, name, orientation, x, y, unk);
-}
-
 void hook_custom_player_select()
 {
 	//p_pselect();
 }
 
-void custom_rendering()
-{
-	process_render();
+void hook_render()
+{ 
+	render();
+	process_mkuhook();
+}
 
+void process_mkuhook()
+{
+	if (get_game_state() == STATE_SELECT)
+	{
+		if (pressed_button(0, PAD_SQUARE))
+			process_select_switch(1);
+		if (pressed_button(0, PAD_CIRCLE))
+			process_palette_toggle();
+	}
+	else
+	{
+		hook_new_select_table(1);
+	}
+
+}
+
+void process_select_switch(int status)
+{
+	if (get_game_tick() - m_nTimer <= 15) return;
+	m_nTimer = get_game_tick();
+	snd_req(SELECT_SCREEN_SWAP_SOUND);
+	bSwapStatus ^= 1;
+	hook_new_select_table(bSwapStatus);
+}
+
+void process_palette_toggle()
+{
+	if (get_game_tick() - m_nTimer <= 15) return;
+	m_nTimer = get_game_tick();
+	toggle_palette ^= 1;
+	snd_req(SELECT_SCREEN_ALT_PAL_SOUND);
 }

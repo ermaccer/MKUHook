@@ -2,8 +2,8 @@
 #include "eLog.h"
 #include "mkdeception.h"
 #include "pspmem.h"
-#include "eLog.h"
 #include "eSettingsMgr.h"
+
 int last_created_player = PLAYER1;
 int last_saved_char_id = PLAYER1;
 

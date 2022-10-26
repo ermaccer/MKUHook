@@ -22,9 +22,6 @@ enum PLAYER_NUM
 
 
 
-
-
-
 // system
 void(*mk_sprintf)(char* ptr, char* fmt, ...);
 
@@ -56,16 +53,61 @@ int(*string_left_xy)(int id, int font, char* text, int y, int x, int unk);
 int(*load_hero_model)(int ptr);
 int(*create_plr)(int plr, struct player_info* obj);
 int(*is_char_locked)(int id, int param);
+int(*is_bgnd_locked)(int id);
 int(*translate_id_from_pz)(int id);
+void(*snd_req)(int id);
+int(*set_music)(int id);
+void(*sub_7F050)();
+int(*randu)(int range);
+int(*bgnd_unhide_sobj)(int id);
 
+char*(*get_string_by_id)(int id);
 // core
 
-void(*process_render)();
-
+void(*render)();
+int(*get_game_state)();
+int get_game_tick();
+int(*pressed_button)(int plr, int id);
 
 void(*impale_player)();
 
+// rw
+int(*RwRasterCreate)(int x, int y, int bits, int mode);
 
+
+enum pad_button {
+	PAD_L2,
+	PAD_R2,
+	PAD_L1,
+	PAD_R1,
+	PAD_TRIANGLE,
+	PAD_CIRCLE,
+	PAD_CROSS,
+	PAD_SQUARE,
+	PAD_SELECT,
+	PAD_L3,
+	PAD_R3,
+	PAD_START,
+	PAD_UP,
+	PAD_RIGHT,
+	PAD_DOWN,
+	PAD_LEFT,
+	PAD_ANY,
+	PAD_L2R2,
+};
+
+enum game_state {
+	STATE_0,
+	STATE_1,
+	STATE_2,
+	STATE_ATTRACT,
+	STATE_SELECT,
+	STATE_5,
+	STATE_6,
+	STATE_GAME,
+	STATE_8,
+	STATE_MENU,
+};
 
 
 

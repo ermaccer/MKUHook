@@ -33,9 +33,6 @@
     <ClCompile Include="code\mkuhook.c">
       <Filter>Header Files\code</Filter>
     </ClCompile>
-    <ClCompile Include="code\mkumenu.c">
-      <Filter>Header Files\code</Filter>
-    </ClCompile>
     <ClCompile Include="code\pspmem.c">
       <Filter>Header Files\code</Filter>
     </ClCompile>
@@ -46,6 +43,15 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="code\mkuplrinfo.c">
+      <Filter>Header Files\code</Filter>
+    </ClCompile>
+    <ClCompile Include="code\stage.c">
+      <Filter>Header Files\code</Filter>
+    </ClCompile>
+    <ClCompile Include="code\mips.c">
+      <Filter>Header Files\code</Filter>
+    </ClCompile>
+    <ClCompile Include="code\injector.c">
       <Filter>Header Files\code</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,9 +74,6 @@
     <ClInclude Include="code\mkuhook.h">
       <Filter>Header Files\code</Filter>
     </ClInclude>
-    <ClInclude Include="code\mkumenu.h">
-      <Filter>Header Files\code</Filter>
-    </ClInclude>
     <ClInclude Include="code\pspmem.h">
       <Filter>Header Files\code</Filter>
     </ClInclude>
@@ -86,5 +89,19 @@
     <ClInclude Include="code\mkuplrinfo.h">
       <Filter>Header Files\code</Filter>
     </ClInclude>
+    <ClInclude Include="code\stage.h">
+      <Filter>Header Files\code</Filter>
+    </ClInclude>
+    <ClInclude Include="code\mips.h">
+      <Filter>Header Files\code</Filter>
+    </ClInclude>
+    <ClInclude Include="code\injector.h">
+      <Filter>Header Files\code</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

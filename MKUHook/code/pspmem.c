@@ -3,14 +3,14 @@
 #include <pspkernel.h>
 
 
-int pBaseAddress;
+static int pBaseAddress;
 
 void PSPPatcher_Init(int base)
 {
 	pBaseAddress = base;
 }
 
-unsigned int GetBaseAddr()
+int GetBaseAddr()
 {
 	return pBaseAddress;
 }
@@ -35,6 +35,10 @@ void MakeCall(unsigned int addr, unsigned int func)
 	_sw(0x0C000000 | (((unsigned int)(func) >> 2) & 0x03FFFFFF), pBaseAddress + addr);
 }
 
+void MakeJump(unsigned int addr, unsigned int func)
+{
+	_sw(0x08000000 | (((unsigned int)(func) & 0x0FFFFFFC) >> 2), pBaseAddress + addr);
+}
 
 void MakeLUI(unsigned int addr, unsigned int value)
 {

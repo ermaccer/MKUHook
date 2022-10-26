@@ -13,12 +13,14 @@
   <ItemGroup>
     <ClCompile Include="code\eLog.c" />
     <ClCompile Include="code\eSettingsMgr.c" />
+    <ClCompile Include="code\injector.c" />
+    <ClCompile Include="code\mips.c" />
     <ClCompile Include="code\mkdeception.c" />
     <ClCompile Include="code\mkuhook.c" />
-    <ClCompile Include="code\mkumenu.c" />
     <ClCompile Include="code\mkuplrinfo.c" />
     <ClCompile Include="code\pspmem.c" />
     <ClCompile Include="code\ssf.c" />
+    <ClCompile Include="code\stage.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="minIni.c" />
   </ItemGroup>
@@ -26,31 +28,37 @@
     <ClInclude Include="code\config.h" />
     <ClInclude Include="code\eLog.h" />
     <ClInclude Include="code\eSettingsMgr.h" />
+    <ClInclude Include="code\injector.h" />
+    <ClInclude Include="code\mips.h" />
     <ClInclude Include="code\mkdeception.h" />
     <ClInclude Include="code\mkstructs.h" />
     <ClInclude Include="code\mkuhook.h" />
-    <ClInclude Include="code\mkumenu.h" />
     <ClInclude Include="code\mkuplrinfo.h" />
     <ClInclude Include="code\pspmem.h" />
     <ClInclude Include="code\ssf.h" />
+    <ClInclude Include="code\stage.h" />
     <ClInclude Include="minGlue.h" />
     <ClInclude Include="minIni.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{6ECACDEC-EA52-46DF-902C-DDEAB6D56877}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Makefile</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Makefile</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
