@@ -9,9 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # استخدام حاوية تحتوي على أدوات مترجم PSP SDK جاهزة ومثبتة مسبقاً
+    # تثبيت نسخة محددة ومعروفة من بيئة الـ PSP Dev لتجنب التحديثات التلقائية الكاسرة للكود
     container:
-      image: pspdev/pspdev:latest
+      image: pspdev/pspdev:v2023-09-01
 
     steps:
       - name: Checkout repository
