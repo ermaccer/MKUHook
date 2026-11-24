@@ -25,7 +25,6 @@ jobs:
       - name: Build Project
         run: |
           echo "Starting build process..."
-          make clean
           make -j$(nproc)
 
       - name: Prepare Release Files
