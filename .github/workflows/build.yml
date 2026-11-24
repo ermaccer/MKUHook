@@ -9,9 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # تثبيت نسخة محددة ومعروفة من بيئة الـ PSP Dev لتجنب التحديثات التلقائية الكاسرة للكود
+    # استخدام الوسم الصحيح والمتوفر دائماً
     container:
-      image: pspdev/pspdev:v2023-09-01
+      image: pspdev/pspdev:latest
 
     steps:
       - name: Checkout repository
