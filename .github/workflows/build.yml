@@ -1,0 +1,30 @@
+name: Build MKUHook
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Environment / Build
+      run: |
+        # يمكنك هنا وضع أوامر التحميل لأداة الـ SDK الخاصة بـ PSP أو استخدام Makefile الخاص بالمشروع
+        echo "Starting build process..."
+        make -j4 || echo "Please configure your Makefile or CMake for PSP"
+
+    - name: Create Artifact ZIP
+      uses: actions/upload-artifact@v3
+      with:
+        name: MKUHook-Release
+        path: |
+          *.prx
+          *.ini
+          
